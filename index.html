@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Progress</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            background: #f2f2f7;
+            color: #1c1c1e;
+            line-height: 1.4;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 24px 0;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .last-updated {
+            color: #8e8e93;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        
+        .course-header {
+            padding: 20px 24px 16px;
+            border-bottom: 0.5px solid #d1d1d6;
+        }
+        
+        .course-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .progress-text {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .progress-bar-container {
+            height: 4px;
+            background: #f2f2f7;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #007aff, #ff6b35);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 0.5px solid #f2f2f7;
+            min-height: 56px;
+        }
+        
+        .task-item:last-child {
+            border-bottom: none;
+        }
+        
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 16px;
+            accent-color: #ff6b35;
+            flex-shrink: 0;
+        }
+        
+        .task-name {
+            flex: 1;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .task-status {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        
+        .status-complete {
+            background: #e8f5e8;
+            color: #30d158;
+        }
+        
+        .status-incomplete {
+            background: #f2f2f7;
+            color: #8e8e93;
+        }
+        
+        .status-uncertain {
+            background: #fff4e0;
+            color: #ff9500;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #8e8e93;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Mobile breakpoints */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .course-header {
+                padding: 16px 20px 12px;
+            }
+            
+            .course-title {
+                font-size: 18px;
+            }
+            
+            .task-item {
+                padding: 12px 20px;
+                min-height: 48px;
+            }
+            
+            .task-name {
+                font-size: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            
+            .stat-card {
+                padding: 16px 12px;
+            }
+            
+            .stat-number {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                margin-bottom: 24px;
+                padding: 16px 0;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .stat-card {
+                padding: 12px;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #000;
+                color: #fff;
+            }
+            
+            .course-card,
+            .stat-card {
+                background: #1c1c1e;
+                box-shadow: none;
+                border: 0.5px solid #38383a;
+            }
+            
+            .course-header {
+                border-bottom-color: #38383a;
+            }
+            
+            .task-item {
+                border-bottom-color: #38383a;
+            }
+            
+            .progress-bar-container {
+                background: #38383a;
+            }
+            
+            .status-incomplete {
+                background: #38383a;
+                color: #8e8e93;
+            }
+            
+            .last-updated,
+            .progress-text,
+            .stat-label {
+                color: #8e8e93;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Course Progress</h1>
+            <div class="last-updated">Updated <span id="lastUpdated"></span></div>
+        </div>
+        
+        <!-- English 12 -->
+        <div class="course-card">
+            <div class="course-header">
+                <div class="course-title">English 12</div>
+                <div class="progress-text" id="english-progress">2 of 7 complete</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="english-bar" style="width: 29%"></div>
+                </div>
+            </div>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">Units 2.1–2.7</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-2.8" data-course="english">
+                    <span class="task-name">2.8 Project</span>
+                    <span class="task-status status-uncertain">Uncertain</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">2.9 Big Idea Reflection</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-novel" data-course="english">
+                    <span class="task-name">Novel Quiz</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-unit4" data-course="english">
+                    <span class="task-name">Unit 4 Test</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-unit5" data-course="english">
+                    <span class="task-name">Unit 5 Write</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-final" data-course="english">
+                    <span class="task-name">Final Exam</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Biology 12 -->
+        <div class="course-card">
+            <div class="course-header">
+                <div class="course-title">Biology 12</div>
+                <div class="progress-text" id="bio-progress">27 of 35 topics (77%)</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="bio-bar" style="width: 0%"></div>
+                </div>
+            </div>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-unit1" data-course="biology">
+                    <span class="task-name">Unit 1 Complete</span>
+                    <span class="task-status status-incomplete">1 left</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-unit2" data-course="biology">
+                    <span class="task-name">Unit 2 Complete</span>
+                    <span class="task-status status-incomplete">1 left</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-unit3" data-course="biology">
+                    <span class="task-name">Unit 3 Complete</span>
+                    <span class="task-status status-incomplete">6 left</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-mod1" data-course="biology">
+                    <span class="task-name">Module 1 Exam</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-mod2" data-course="biology">
+                    <span class="task-name">Module 2 Exam</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-final" data-course="biology">
+                    <span class="task-name">Final Exam</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Pre-Calculus 12 -->
+        <div class="course-card">
+            <div class="course-header">
+                <div class="course-title">Pre-Calculus 12</div>
+                <div class="progress-text" id="precalc-progress">Not started</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="precalc-bar" style="width: 0%"></div>
+                </div>
+            </div>
+            <ul class="task-list">
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="precalc-assign" data-course="precalculus">
+                    <span class="task-name">Assignments & Quizzes</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="precalc-tests" data-course="precalculus">
+                    <span class="task-name">Unit Tests</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="precalc-final" data-course="precalculus">
+                    <span class="task-name">Final Exam</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-complete">0</div>
+                <div class="stat-label">Complete</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-remaining">0</div>
+                <div class="stat-label">Remaining</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="overall-percent">0%</div>
+                <div class="stat-label">Progress</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTimestamp();
+            loadStates();
+            updateAllProgress();
+            
+            const checkboxes = document.querySelectorAll('.task-checkbox[data-course]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    saveState(this.id, this.checked);
+                    updateProgress(this.dataset.course);
+                    updateOverallStats();
+                    updateTimestamp();
+                });
+            });
+        });
+        
+        function updateTimestamp() {
+            const now = new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+            document.getElementById('lastUpdated').textContent = now;
+        }
+        
+        function saveState(id, checked) {
+            localStorage.setItem(`task_${id}`, checked.toString());
+        }
+        
+        function loadStates() {
+            const checkboxes = document.querySelectorAll('.task-checkbox[data-course]');
+            checkboxes.forEach(checkbox => {
+                const saved = localStorage.getItem(`task_${checkbox.id}`);
+                if (saved !== null) {
+                    checkbox.checked = saved === 'true';
+                }
+            });
+        }
+        
+        function updateProgress(course) {
+            const checkboxes = document.querySelectorAll(`[data-course="${course}"]`);
+            const total = checkboxes.length;
+            const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            const progressBar = document.getElementById(`${course}-bar`);
+            if (progressBar) {
+                progressBar.style.width = percent + '%';
+            }
+            
+            const progressText = document.getElementById(`${course}-progress`);
+            if (progressText) {
+                if (course === 'english') {
+                    const totalComplete = completed + 2; // Pre-completed tasks
+                    progressText.textContent = `${totalComplete} of 7 complete`;
+                } else if (course === 'biology') {
+                    progressText.textContent = 
+                        percent > 0 ? `${percent}% of tasks complete` : '27 of 35 topics (77%)';
+                } else if (course === 'precalculus') {
+                    progressText.textContent = 
+                        percent > 0 ? `${percent}% complete` : 'Not started';
+                }
+            }
+        }
+        
+        function updateAllProgress() {
+            updateProgress('english');
+            updateProgress('biology');
+            updateProgress('precalculus');
+            updateOverallStats();
+        }
+        
+        function updateOverallStats() {
+            const allCheckboxes = document.querySelectorAll('.task-checkbox');
+            const total = allCheckboxes.length;
+            const completed = Array.from(allCheckboxes).filter(cb => cb.checked).length;
+            const remaining = total - completed;
+            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+            
+            document.getElementById('total-complete').textContent = completed;
+            document.getElementById('total-remaining').textContent = remaining;
+            document.getElementById('overall-percent').textContent = percent + '%';
+        }
+    </script>
+</body>
+</html>
