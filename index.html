@@ -88,6 +88,24 @@
         .course-header {
             padding: 20px 24px 16px;
             border-bottom: 0.5px solid #d1d1d6;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .course-header:hover {
+            background-color: rgba(0,0,0,0.02);
+        }
+
+        .course-toggle {
+            float: right;
+            font-size: 14px;
+            color: #8e8e93;
+            margin-left: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .course-toggle.expanded {
+            transform: rotate(180deg);
         }
         
         .course-title {
@@ -140,6 +158,11 @@
         
         .task-list {
             list-style: none;
+            display: none;
+        }
+
+        .task-list.expanded {
+            display: block;
         }
         
         .task-item {
@@ -355,14 +378,14 @@
 
         <!-- English 12 -->
         <div class="course-card">
-            <div class="course-header">
-                <div class="course-title">English 12 <span class="course-grade">A-</span></div>
+            <div class="course-header" onclick="toggleCourse('english')">
+                <div class="course-title">English 12 <span class="course-grade">A-</span><span class="course-toggle">▼</span></div>
                 <div class="progress-text" id="english-progress">14 of 20 complete</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="english-bar" style="width: 70%"></div>
                 </div>
             </div>
-            <ul class="task-list">
+            <ul class="task-list" id="english-tasks">
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" checked disabled>
                     <span class="task-name">Unit 1: The Basics (1.1-1.5)</span>
@@ -468,8 +491,8 @@
         
         <!-- Anatomy and Physiology 12 -->
         <div class="course-card">
-            <div class="course-header">
-                <div class="course-title">Anatomy and Physiology 12 <span class="course-grade">A</span></div>
+            <div class="course-header" onclick="toggleCourse('biology')">
+                <div class="course-title">Anatomy and Physiology 12 <span class="course-grade">A</span><span class="course-toggle">▼</span></div>
                 <div class="progress-text" id="bio-progress">5 of 12 complete</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="bio-bar" style="width: 42%"></div>
@@ -489,7 +512,7 @@
             </div>
 
             <!-- CrashCourse Video List -->
-            <ul class="task-list" style="border-top: none;">
+            <ul class="task-list" id="biology-crashcourse" style="border-top: none;">
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" checked disabled>
                     <span class="task-name">1. Introduction to Biology</span>
@@ -537,7 +560,7 @@
                 </li>
             </ul>
 
-            <ul class="task-list">
+            <ul class="task-list" id="biology-tasks">
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" checked disabled>
                     <span class="task-name">Module 1 Project</span>
@@ -603,14 +626,14 @@
         
         <!-- Pre-Calculus 12 -->
         <div class="course-card">
-            <div class="course-header">
-                <div class="course-title">Pre-Calculus 12 <span class="course-grade grade-x">—</span></div>
+            <div class="course-header" onclick="toggleCourse('precalculus')">
+                <div class="course-title">Pre-Calculus 12 <span class="course-grade grade-x">—</span><span class="course-toggle">▼</span></div>
                 <div class="progress-text" id="precalc-progress">Not started</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="precalc-bar" style="width: 0%"></div>
                 </div>
             </div>
-            <ul class="task-list">
+            <ul class="task-list" id="precalculus-tasks">
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" id="precalc-assign" data-course="precalculus">
                     <span class="task-name">Assignments & Quizzes</span>
@@ -641,7 +664,7 @@
             updateTimestamp();
             loadStates();
             updateAllProgress();
-            
+
             const checkboxes = document.querySelectorAll('.task-checkbox[data-course]');
             checkboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', function() {
@@ -652,6 +675,22 @@
                 });
             });
         });
+
+        function toggleCourse(courseId) {
+            const tasks = document.getElementById(courseId + '-tasks');
+            const crashcourse = document.getElementById(courseId + '-crashcourse');
+            const toggle = document.querySelector(`[onclick="toggleCourse('${courseId}')"] .course-toggle`);
+
+            if (tasks) {
+                tasks.classList.toggle('expanded');
+            }
+            if (crashcourse) {
+                crashcourse.classList.toggle('expanded');
+            }
+            if (toggle) {
+                toggle.classList.toggle('expanded');
+            }
+        }
         
         function updateTimestamp() {
             const now = new Date().toLocaleString('en-US', {
