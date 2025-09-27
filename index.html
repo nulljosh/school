@@ -61,6 +61,26 @@
             font-weight: 600;
             margin-bottom: 6px;
         }
+
+        .course-grade {
+            float: right;
+            font-size: 16px;
+            font-weight: 700;
+            color: #30d158;
+            background: #e8f5e8;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .grade-c {
+            color: #ff9500;
+            background: #fff4e0;
+        }
+
+        .grade-x {
+            color: #8e8e93;
+            background: #f2f2f7;
+        }
         
         .progress-text {
             color: #8e8e93;
@@ -258,6 +278,21 @@
             .stat-label {
                 color: #8e8e93;
             }
+
+            .course-grade {
+                background: #1e3a1e;
+                color: #30d158;
+            }
+
+            .grade-c {
+                background: #3a2a1e;
+                color: #ff9500;
+            }
+
+            .grade-x {
+                background: #38383a;
+                color: #8e8e93;
+            }
         }
     </style>
 </head>
@@ -271,7 +306,7 @@
         <!-- English 12 -->
         <div class="course-card">
             <div class="course-header">
-                <div class="course-title">English 12</div>
+                <div class="course-title">English 12 <span class="course-grade">A</span></div>
                 <div class="progress-text" id="english-progress">14 of 20 complete</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="english-bar" style="width: 70%"></div>
@@ -381,10 +416,10 @@
             </ul>
         </div>
         
-        <!-- Biology 12 -->
+        <!-- Anatomy and Physiology 12 -->
         <div class="course-card">
             <div class="course-header">
-                <div class="course-title">Biology 12</div>
+                <div class="course-title">Anatomy and Physiology 12 <span class="course-grade grade-c">C</span></div>
                 <div class="progress-text" id="bio-progress">27 of 35 topics (77%)</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="bio-bar" style="width: 0%"></div>
@@ -427,7 +462,7 @@
         <!-- Pre-Calculus 12 -->
         <div class="course-card">
             <div class="course-header">
-                <div class="course-title">Pre-Calculus 12</div>
+                <div class="course-title">Pre-Calculus 12 <span class="course-grade grade-x">—</span></div>
                 <div class="progress-text" id="precalc-progress">Not started</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="precalc-bar" style="width: 0%"></div>
@@ -467,6 +502,11 @@
                 <div class="stat-label">Progress</div>
             </div>
         </div>
+
+        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8e8e93; font-size: 14px;">
+            <hr style="border: none; border-top: 1px solid #d1d1d6; margin-bottom: 16px;">
+            2025-2026
+        </footer>
     </div>
     
     <script>
