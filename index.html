@@ -584,11 +584,23 @@
             const checkboxes = document.querySelectorAll(`[data-course="${course}"]`);
             const total = checkboxes.length;
             const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
-            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
-            
+
             const progressBar = document.getElementById(`${course}-bar`);
             if (progressBar) {
-                progressBar.style.width = percent + '%';
+                if (course === 'english') {
+                    const totalComplete = completed + 13; // Pre-completed tasks
+                    const totalTasks = 20;
+                    const percent = Math.round((totalComplete / totalTasks) * 100);
+                    progressBar.style.width = percent + '%';
+                } else if (course === 'biology') {
+                    const totalComplete = completed + 5; // Pre-completed tasks
+                    const totalTasks = 12;
+                    const percent = Math.round((totalComplete / totalTasks) * 100);
+                    progressBar.style.width = percent + '%';
+                } else {
+                    const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+                    progressBar.style.width = percent + '%';
+                }
             }
             
             const progressText = document.getElementById(`${course}-progress`);
