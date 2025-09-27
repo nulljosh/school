@@ -272,21 +272,36 @@
         <div class="course-card">
             <div class="course-header">
                 <div class="course-title">English 12</div>
-                <div class="progress-text" id="english-progress">2 of 7 complete</div>
+                <div class="progress-text" id="english-progress">14 of 20 complete</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" id="english-bar" style="width: 29%"></div>
+                    <div class="progress-bar" id="english-bar" style="width: 70%"></div>
                 </div>
             </div>
             <ul class="task-list">
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" checked disabled>
-                    <span class="task-name">Units 2.1–2.7</span>
+                    <span class="task-name">Unit 1: The Basics (1.1-1.5)</span>
                     <span class="task-status status-complete">Complete</span>
                 </li>
                 <li class="task-item">
-                    <input type="checkbox" class="task-checkbox" id="eng-2.8" data-course="english">
-                    <span class="task-name">2.8 Project</span>
-                    <span class="task-status status-uncertain">Uncertain</span>
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">2.1 Visual Literacy</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-2.2" data-course="english">
+                    <span class="task-name">2.2 In-Text Citations</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">2.3 Works Cited</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-2.4-2.8" data-course="english">
+                    <span class="task-name">Units 2.4-2.8</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
                 </li>
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" checked disabled>
@@ -294,18 +309,68 @@
                     <span class="task-status status-complete">Complete</span>
                 </li>
                 <li class="task-item">
-                    <input type="checkbox" class="task-checkbox" id="eng-novel" data-course="english">
-                    <span class="task-name">Novel Quiz</span>
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">3.1 Novel Pre-Reading</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">3.2 Reflective Journal</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-3.3-3.4" data-course="english">
+                    <span class="task-name">3.3-3.4 Novel Study</span>
                     <span class="task-status status-incomplete">Incomplete</span>
                 </li>
                 <li class="task-item">
-                    <input type="checkbox" class="task-checkbox" id="eng-unit4" data-course="english">
-                    <span class="task-name">Unit 4 Test</span>
-                    <span class="task-status status-incomplete">Incomplete</span>
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4.1 Perspectives and Mediums</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4.2 Point of View</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4.3 Nature Imagery</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4.4 Synthesis Essay</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4.5 Forum: Identity in Film</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4.6 Project: Online Identity</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4.7 Big Idea Reflection #2</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-4.8" data-course="english">
+                    <span class="task-name">4.8 Quiz: Synthesis Writing (Contact teacher)</span>
+                    <span class="task-status status-incomplete">Need teacher</span>
                 </li>
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" id="eng-unit5" data-course="english">
-                    <span class="task-name">Unit 5 Write</span>
+                    <span class="task-name">Unit 5: Responsibility</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-unit6" data-course="english">
+                    <span class="task-name">Unit 6: Thinking</span>
                     <span class="task-status status-incomplete">Incomplete</span>
                 </li>
                 <li class="task-item">
@@ -459,8 +524,8 @@
             const progressText = document.getElementById(`${course}-progress`);
             if (progressText) {
                 if (course === 'english') {
-                    const totalComplete = completed + 2; // Pre-completed tasks
-                    progressText.textContent = `${totalComplete} of 7 complete`;
+                    const totalComplete = completed + 13; // Pre-completed tasks (1.1-1.5, 2.1, 2.3, 2.9, 3.1, 3.2, 4.1-4.7)
+                    progressText.textContent = `${totalComplete} of 20 complete`;
                 } else if (course === 'biology') {
                     progressText.textContent = 
                         percent > 0 ? `${percent}% of tasks complete` : '27 of 35 topics (77%)';
