@@ -19,7 +19,7 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -631,7 +631,7 @@
             const completed = Array.from(allCheckboxes).filter(cb => cb.checked).length;
             const remaining = total - completed;
             const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
-            
+
             document.getElementById('total-complete').textContent = completed;
             document.getElementById('total-remaining').textContent = remaining;
             document.getElementById('overall-percent').textContent = percent + '%';
