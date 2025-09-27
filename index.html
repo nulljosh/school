@@ -475,6 +475,68 @@
                     <div class="progress-bar" id="bio-bar" style="width: 42%"></div>
                 </div>
             </div>
+
+            <!-- CrashCourse YouTube Progress -->
+            <div style="padding: 16px 24px; border-bottom: 0.5px solid #f2f2f7; background: #f8f9fa;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <h4 style="font-size: 16px; font-weight: 600; margin: 0; color: #1c1c1e;">Crash Course A&P</h4>
+                    <a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtOAKed_MxxWBNaPno5h3Zs8" target="_blank" style="font-size: 12px; color: #007AFF; text-decoration: none;">View Playlist →</a>
+                </div>
+                <div class="progress-text" style="margin-bottom: 8px;">7 of 40 videos complete (18%)</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 18%; background: #007AFF;"></div>
+                </div>
+            </div>
+
+            <!-- CrashCourse Video List -->
+            <ul class="task-list" style="border-top: none;">
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">1. Introduction to Biology</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">2. Water and Life</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">3. Biological Molecules</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">4. Cell Structure & Function</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">5. Tissues (Four Types)</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">6. Respiratory System</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" checked disabled>
+                    <span class="task-name">7. Circulatory System</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="cc-video8" data-course="crashcourse">
+                    <span class="task-name">8. Digestive System</span>
+                    <span class="task-status status-incomplete">Next</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="cc-remaining" data-course="crashcourse">
+                    <span class="task-name">Videos 9-40 (Remaining)</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+            </ul>
+
             <ul class="task-list">
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" checked disabled>
@@ -657,6 +719,7 @@
             updateProgress('english');
             updateProgress('biology');
             updateProgress('precalculus');
+            updateProgress('crashcourse');
             updateOverallStats();
         }
         
