@@ -29,6 +29,41 @@
             margin-bottom: 32px;
             padding: 24px 0;
         }
+
+        .overall-progress {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .overall-progress-label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1c1c1e;
+        }
+
+        .overall-progress-text {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .overall-progress-bar-container {
+            height: 8px;
+            background: #f2f2f7;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .overall-progress-bar {
+            height: 100%;
+            background: #ff6b35;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
         
         .header h1 {
             font-size: 28px;
@@ -250,7 +285,8 @@
             }
             
             .course-card,
-            .stat-card {
+            .stat-card,
+            .overall-progress {
                 background: #1c1c1e;
                 box-shadow: none;
                 border: 0.5px solid #38383a;
@@ -264,7 +300,8 @@
                 border-bottom-color: #38383a;
             }
             
-            .progress-bar-container {
+            .progress-bar-container,
+            .overall-progress-bar-container {
                 background: #38383a;
             }
             
@@ -275,6 +312,7 @@
             
             .last-updated,
             .progress-text,
+            .overall-progress-text,
             .stat-label {
                 color: #8e8e93;
             }
@@ -302,7 +340,16 @@
             <h1>Course Progress</h1>
             <div class="last-updated">Updated <span id="lastUpdated"></span></div>
         </div>
-        
+
+        <!-- Overall Progress -->
+        <div class="overall-progress">
+            <div class="overall-progress-label">Overall Progress</div>
+            <div class="overall-progress-text" id="overall-progress-text">0 of 0 tasks complete</div>
+            <div class="overall-progress-bar-container">
+                <div class="overall-progress-bar" id="overall-progress-bar" style="width: 0%"></div>
+            </div>
+        </div>
+
         <!-- English 12 -->
         <div class="course-card">
             <div class="course-header">
@@ -527,10 +574,6 @@
                 <div class="stat-number" id="total-remaining">0</div>
                 <div class="stat-label">Remaining</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-number" id="overall-percent">0%</div>
-                <div class="stat-label">Progress</div>
-            </div>
         </div>
 
         <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8e8e93; font-size: 14px;">
@@ -634,7 +677,10 @@
 
             document.getElementById('total-complete').textContent = completed;
             document.getElementById('total-remaining').textContent = remaining;
-            document.getElementById('overall-percent').textContent = percent + '%';
+
+            // Update overall progress bar
+            document.getElementById('overall-progress-text').textContent = `${completed} of ${total} tasks complete`;
+            document.getElementById('overall-progress-bar').style.width = percent + '%';
         }
     </script>
 </body>
