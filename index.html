@@ -321,8 +321,12 @@
         }
 
         /* Link styles */
-        a:hover {
-            text-decoration: underline !important;
+        .course-title a {
+            text-decoration: none;
+        }
+
+        .course-title a:hover {
+            text-decoration: underline;
         }
 
         /* Dark mode support */
@@ -412,7 +416,7 @@
         <!-- English -->
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('english')">
-                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/127540" target="_blank" style="color: inherit; text-decoration: none;">English</a> <span class="course-grade">A-</span><span class="course-toggle">▼</span></div>
+                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/127540" target="_blank" style="color: inherit;">English</a> <span class="course-grade">A-</span><span class="course-toggle">▼</span></div>
                 <div class="progress-text" id="english-progress">14 of 21 complete</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="english-bar" style="width: 67%"></div>
@@ -675,7 +679,7 @@
         <!-- Science -->
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('biology')">
-                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/153403" target="_blank" style="color: inherit; text-decoration: none;">Science</a> <span class="course-grade">A</span><span class="course-toggle">▼</span></div>
+                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/153403" target="_blank" style="color: inherit;">Science</a> <span class="course-grade">A</span><span class="course-toggle">▼</span></div>
                 <div class="progress-text" id="bio-progress">5 of 12 complete</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="bio-bar" style="width: 42%"></div>
@@ -1010,7 +1014,7 @@
         <!-- Math -->
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('precalculus')">
-                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/184298" target="_blank" style="color: inherit; text-decoration: none;">Math</a> <span class="course-grade grade-x">—</span><span class="course-toggle">▼</span></div>
+                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/184298" target="_blank" style="color: inherit;">Math</a> <span class="course-grade grade-x">—</span><span class="course-toggle">▼</span></div>
                 <div class="progress-text" id="precalc-progress">Not started</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="precalc-bar" style="width: 0%"></div>
