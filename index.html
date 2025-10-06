@@ -716,6 +716,65 @@
                 </div>
             </div>
 
+            <!-- AP Learning Guides -->
+            <div class="crashcourse-header">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <h4 class="crashcourse-title">Learning Guides</h4>
+                </div>
+                <div class="progress-text" style="margin-bottom: 8px;">0 of 10 units complete (0%)</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%; background: #007AFF;"></div>
+                </div>
+            </div>
+
+            <ul class="task-list" id="biology-learning-guides" style="border-top: none;">
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u1-guide" data-course="biology">
+                    <span class="task-name">U1 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u2-guide" data-course="biology">
+                    <span class="task-name">U2 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u3-guide" data-course="biology">
+                    <span class="task-name">U3 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u4-guide" data-course="biology">
+                    <span class="task-name">U4 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u5-guide" data-course="biology">
+                    <span class="task-name">U5 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u6-guide" data-course="biology">
+                    <span class="task-name">U6 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u7-guide" data-course="biology">
+                    <span class="task-name">U7 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u8-guide" data-course="biology">
+                    <span class="task-name">U8 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-u9-guide" data-course="biology">
+                    <span class="task-name">U9 Learning Guide</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+            </ul>
+
             <!-- CrashCourse Video List -->
             <ul class="task-list" id="biology-crashcourse" style="border-top: none;">
                 <li class="task-item">
@@ -1053,19 +1112,39 @@
 
             <ul class="task-list" id="precalculus-tasks">
                 <li class="task-item">
-                    <input type="checkbox" class="task-checkbox" id="precalc-assign" data-course="precalculus">
-                    <span class="task-name">Assignments & Quizzes</span>
-                    <span class="task-status status-complete">Complete</span>
+                    <input type="checkbox" class="task-checkbox" id="precalc-courseinfo" data-course="precalculus">
+                    <span class="task-name">Course Info - Start Here (0/1 Topics Completed)</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
                 </li>
                 <li class="task-item">
-                    <input type="checkbox" class="task-checkbox" id="precalc-tests" data-course="precalculus">
-                    <span class="task-name">Unit Tests</span>
-                    <span class="task-status status-complete">Complete</span>
+                    <input type="checkbox" class="task-checkbox" id="precalc-unit1" data-course="precalculus">
+                    <span class="task-name">Unit 1 (0/7 Topics Completed)</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="precalc-bookmod1" data-course="precalculus">
+                    <span class="task-name">Please Book Your Module 1 Exam</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="precalc-mod1exam" data-course="precalculus">
+                    <span class="task-name">MODULE 1 EXAM</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="precalc-mod2exam" data-course="precalculus">
+                    <span class="task-name">MODULE 2 EXAM</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="precalc-mod3exam" data-course="precalculus">
+                    <span class="task-name">MODULE 3 EXAM</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
                 </li>
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" id="precalc-final" data-course="precalculus">
-                    <span class="task-name">Final Exam</span>
-                    <span class="task-status status-complete">Complete</span>
+                    <span class="task-name">FINAL EXAM (0/1 Topics Completed)</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
                 </li>
             </ul>
         </div>
@@ -1256,6 +1335,7 @@
         function toggleCourse(courseId) {
             const tasks = document.getElementById(courseId + '-tasks');
             const crashcourse = document.getElementById(courseId + '-crashcourse');
+            const learningGuides = document.getElementById(courseId + '-learning-guides');
             const toggle = document.querySelector(`[onclick="toggleCourse('${courseId}')"] .course-toggle`);
 
             if (tasks) {
@@ -1263,6 +1343,9 @@
             }
             if (crashcourse) {
                 crashcourse.classList.toggle('expanded');
+            }
+            if (learningGuides) {
+                learningGuides.classList.toggle('expanded');
             }
             if (toggle) {
                 toggle.classList.toggle('expanded');
