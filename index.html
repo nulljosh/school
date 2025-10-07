@@ -344,6 +344,14 @@
             text-decoration: underline;
         }
 
+        .task-name a {
+            text-decoration: none;
+        }
+
+        .task-name a:hover {
+            text-decoration: underline;
+        }
+
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
             body {
@@ -1218,9 +1226,9 @@
                     <span class="task-status status-incomplete">In Progress</span>
                 </li>
                 <li class="task-item">
-                    <input type="checkbox" class="task-checkbox" id="history-blackhistory" data-course="history">
-                    <span class="task-name">Black American History (2/51 episodes)</span>
-                    <span class="task-status status-incomplete">In Progress</span>
+                    <input type="checkbox" class="task-checkbox" id="history-blackhistory" data-course="history" checked>
+                    <span class="task-name"><a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNYJO8JWpXO2JP0ezgxsrJJ" target="_blank" style="color: #007AFF;">Black American History</a></span>
+                    <span class="task-status status-complete">Complete</span>
                 </li>
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" id="history-ushistory" data-course="history">
