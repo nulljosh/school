@@ -13,9 +13,10 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-            background: #f2f2f7;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
             color: #1c1c1e;
             line-height: 1.4;
+            min-height: 100vh;
         }
         
         .container {
@@ -46,11 +47,14 @@
         }
 
         .overall-progress {
-            background: white;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
             padding: 20px 24px;
             margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .overall-progress-label {
@@ -93,11 +97,20 @@
         }
         
         .course-card {
-            background: white;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 16px;
             margin-bottom: 28px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         
         .course-header {
@@ -256,11 +269,20 @@
         }
         
         .stat-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
         
         .stat-number {
@@ -335,6 +357,71 @@
             }
         }
 
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .dark-mode-toggle:active {
+            transform: scale(0.95);
+        }
+
+        .dark-mode-toggle svg {
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle .sun-icon {
+            opacity: 1;
+            transform: rotate(0deg);
+            color: #ff9500;
+        }
+
+        .dark-mode-toggle .moon-icon {
+            opacity: 0;
+            transform: rotate(180deg);
+            color: #007AFF;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background: rgba(28, 28, 30, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode .dark-mode-toggle .sun-icon {
+            opacity: 0;
+            transform: rotate(180deg);
+        }
+
+        body.dark-mode .dark-mode-toggle .moon-icon {
+            opacity: 1;
+            transform: rotate(0deg);
+        }
+
         /* Link styles */
         .course-title a {
             text-decoration: none;
@@ -354,75 +441,175 @@
 
         /* Dark mode support */
         @media (prefers-color-scheme: dark) {
-            body {
-                background: #000;
+            body:not(.light-mode) {
+                background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
                 color: #fff;
             }
-            
-            .course-card,
-            .stat-card,
-            .overall-progress {
-                background: #1c1c1e;
-                box-shadow: none;
-                border: 0.5px solid #38383a;
+
+            body:not(.light-mode) .course-card,
+            body:not(.light-mode) .stat-card,
+            body:not(.light-mode) .overall-progress {
+                background: rgba(28, 28, 30, 0.7);
+                backdrop-filter: blur(20px) saturate(180%);
+                -webkit-backdrop-filter: blur(20px) saturate(180%);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
-            
-            .course-header {
+
+            body:not(.light-mode) .course-card:hover,
+            body:not(.light-mode) .stat-card:hover {
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            }
+
+            body:not(.light-mode) .course-header {
                 border-bottom-color: #38383a;
             }
-            
-            .task-item {
+
+            body:not(.light-mode) .task-item {
                 border-bottom-color: #38383a;
             }
-            
-            .progress-bar-container,
-            .overall-progress-bar-container {
+
+            body:not(.light-mode) .progress-bar-container,
+            body:not(.light-mode) .overall-progress-bar-container {
                 background: #38383a;
             }
-            
-            .status-incomplete {
+
+            body:not(.light-mode) .status-incomplete {
                 background: #38383a;
-                color: #8e8e93;
-            }
-            
-            .last-updated,
-            .progress-text,
-            .overall-progress-text,
-            .stat-label {
                 color: #8e8e93;
             }
 
-            .course-grade {
+            body:not(.light-mode) .last-updated,
+            body:not(.light-mode) .progress-text,
+            body:not(.light-mode) .overall-progress-text,
+            body:not(.light-mode) .stat-label {
+                color: #8e8e93;
+            }
+
+            body:not(.light-mode) .course-grade {
                 background: #1e3a1e;
                 color: #30d158;
                 box-shadow: 0 1px 3px rgba(48, 209, 88, 0.3);
             }
 
-            .grade-c {
+            body:not(.light-mode) .grade-c {
                 background: #3a2a1e;
                 color: #ff9500;
                 box-shadow: 0 1px 3px rgba(255, 149, 0, 0.3);
             }
 
-            .grade-x {
+            body:not(.light-mode) .grade-x {
                 background: #38383a;
                 color: #8e8e93;
                 box-shadow: 0 1px 3px rgba(142, 142, 147, 0.2);
             }
 
-            .crashcourse-header {
+            body:not(.light-mode) .crashcourse-header {
                 background: #38383a;
                 border-bottom-color: #38383a;
             }
 
-            .crashcourse-title {
+            body:not(.light-mode) .crashcourse-title {
                 color: #fff;
             }
+        }
+
+        /* Manual dark mode */
+        body.dark-mode {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #fff;
+        }
+
+        body.dark-mode .course-card,
+        body.dark-mode .stat-card,
+        body.dark-mode .overall-progress {
+            background: rgba(28, 28, 30, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .course-card:hover,
+        body.dark-mode .stat-card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        body.dark-mode .course-header {
+            border-bottom-color: #38383a;
+        }
+
+        body.dark-mode .task-item {
+            border-bottom-color: #38383a;
+        }
+
+        body.dark-mode .progress-bar-container,
+        body.dark-mode .overall-progress-bar-container {
+            background: #38383a;
+        }
+
+        body.dark-mode .status-incomplete {
+            background: #38383a;
+            color: #8e8e93;
+        }
+
+        body.dark-mode .last-updated,
+        body.dark-mode .progress-text,
+        body.dark-mode .overall-progress-text,
+        body.dark-mode .stat-label {
+            color: #8e8e93;
+        }
+
+        body.dark-mode .course-grade {
+            background: #1e3a1e;
+            color: #30d158;
+            box-shadow: 0 1px 3px rgba(48, 209, 88, 0.3);
+        }
+
+        body.dark-mode .grade-c {
+            background: #3a2a1e;
+            color: #ff9500;
+            box-shadow: 0 1px 3px rgba(255, 149, 0, 0.3);
+        }
+
+        body.dark-mode .grade-x {
+            background: #38383a;
+            color: #8e8e93;
+            box-shadow: 0 1px 3px rgba(142, 142, 147, 0.2);
+        }
+
+        body.dark-mode .crashcourse-header {
+            background: #38383a;
+            border-bottom-color: #38383a;
+        }
+
+        body.dark-mode .crashcourse-title {
+            color: #fff;
+        }
+
+        body.dark-mode .course-header:hover {
+            background-color: rgba(255,255,255,0.05);
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
         <div class="breadcrumb">
             <a href="https://fuckingjoshua.com">..</a>
         </div>
@@ -1650,6 +1837,7 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            initDarkMode();
             updateTimestamp();
             loadStates();
             updateAllProgress();
@@ -1664,6 +1852,29 @@
                 });
             });
         });
+
+        function initDarkMode() {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+            }
+
+            darkModeToggle.addEventListener('click', function() {
+                if (document.body.classList.contains('dark-mode')) {
+                    document.body.classList.remove('dark-mode');
+                    document.body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.body.classList.remove('light-mode');
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
 
         function toggleCourse(courseId) {
             const tasks = document.getElementById(courseId + '-tasks');
