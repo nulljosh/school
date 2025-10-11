@@ -23,6 +23,16 @@
             max-width: 80%;
             margin: 0 auto;
             padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .container > .header,
+        .container > .breadcrumb,
+        .container > .overall-progress,
+        .container > #darkModeToggle {
+            grid-column: 1 / -1;
         }
         
         .breadcrumb {
@@ -101,7 +111,6 @@
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border-radius: 16px;
-            margin-bottom: 28px;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -304,6 +313,8 @@
         @media (max-width: 768px) {
             .container {
                 padding: 16px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
             }
             
             .header h1 {
@@ -342,6 +353,11 @@
         }
         
         @media (max-width: 480px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
             .header {
                 margin-bottom: 24px;
                 padding: 16px 0;
