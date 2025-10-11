@@ -511,9 +511,9 @@
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('english')">
                 <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/127540" target="_blank" style="color: inherit;">English</a> <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span> <span class="course-grade">A+</span><span class="course-toggle">▼</span></div>
-                <div class="progress-text" id="english-progress">18 of 20 complete</div>
+                <div class="progress-text" id="english-progress">19 of 28 complete</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" id="english-bar" style="width: 90%"></div>
+                    <div class="progress-bar" id="english-bar" style="width: 68%"></div>
                 </div>
             </div>
 
@@ -741,8 +741,48 @@
                     <span class="task-status status-complete">Complete</span>
                 </li>
                 <li class="task-item">
-                    <input type="checkbox" class="task-checkbox" id="eng-unit5" data-course="english">
-                    <span class="task-name">Unit 5 (inc. 5.6 in-class write)</span>
+                    <input type="checkbox" class="task-checkbox" id="eng-5.1" data-course="english" checked>
+                    <span class="task-name">5.1 Language Changes Over Time</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.2" data-course="english">
+                    <span class="task-name">5.2 Satire: A Modern Proposal</span>
+                    <span class="task-status status-incomplete">To Do</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.3" data-course="english">
+                    <span class="task-name">5.3 Tweet Summary</span>
+                    <span class="task-status status-incomplete">To Do</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.4" data-course="english">
+                    <span class="task-name">5.4 Advertising Language</span>
+                    <span class="task-status status-incomplete">To Do</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.5" data-course="english">
+                    <span class="task-name">5.5 First Contact Misinterpretation</span>
+                    <span class="task-status status-incomplete">To Do</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.6" data-course="english">
+                    <span class="task-name">5.6 Annotated Bibliography</span>
+                    <span class="task-status status-incomplete">To Do</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.7" data-course="english">
+                    <span class="task-name">5.7 PROJECT: Reconciliation Now</span>
+                    <span class="task-status status-incomplete">To Do</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.8" data-course="english">
+                    <span class="task-name">5.8 Big Idea Reflection #3</span>
+                    <span class="task-status status-incomplete">To Do</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="eng-5.9" data-course="english">
+                    <span class="task-name">5.9 QUIZ: The Evolution of Language</span>
                     <span class="task-status status-incomplete">To Do</span>
                 </li>
                 <li class="task-item">
@@ -1451,7 +1491,7 @@
             if (progressBar) {
                 if (course === 'english') {
                     const totalComplete = completed + 13; // Pre-completed disabled tasks
-                    const totalTasks = 20;
+                    const totalTasks = 28;
                     const percent = Math.round((totalComplete / totalTasks) * 100);
                     progressBar.style.width = percent + '%';
                 } else if (course === 'biology') {
@@ -1469,7 +1509,7 @@
             if (progressText) {
                 if (course === 'english') {
                     const totalComplete = completed + 13; // Pre-completed disabled tasks
-                    progressText.textContent = `${totalComplete} of 20 complete`;
+                    progressText.textContent = `${totalComplete} of 28 complete`;
                 } else if (course === 'biology') {
                     progressText.textContent =
                         percent > 0 ? `${percent}% of tasks complete` : '27 of 35 topics (77%)';
