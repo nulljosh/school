@@ -1286,6 +1286,37 @@
             </ul>
         </div>
 
+        <!-- Business Entrepreneurship -->
+        <div class="course-card">
+            <div class="course-header" onclick="toggleCourse('business')">
+                <div class="course-title">Business Entrepreneurship <span class="course-grade grade-x">—</span><span class="course-toggle">▼</span></div>
+                <div class="progress-text" id="business-progress">Not started</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="business-bar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- CrashCourse Business Entrepreneurship -->
+            <div class="crashcourse-header">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <h4 class="crashcourse-title">Crash Course Business Entrepreneurship</h4>
+                    <a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNamNKW5qlS-nKgA0on7Qze" target="_blank" style="font-size: 12px; color: #007AFF; text-decoration: none;">View Playlist →</a>
+                </div>
+                <div class="progress-text" style="margin-bottom: 8px;">0 of 17 videos complete (0%)</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 0%; background: #007AFF;"></div>
+                </div>
+            </div>
+
+            <ul class="task-list" id="business-tasks">
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="business-series" data-course="business">
+                    <span class="task-name">Business Entrepreneurship Series (0/17 episodes)</span>
+                    <span class="task-status status-incomplete">Not Started</span>
+                </li>
+            </ul>
+        </div>
+
         <!-- History -->
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('history')">
@@ -1531,6 +1562,7 @@
             updateProgress('biology');
             updateProgress('precalculus');
             updateProgress('college');
+            updateProgress('business');
             updateProgress('history');
             updateProgress('stem');
             updateProgress('crashcourse');
