@@ -31,7 +31,12 @@
         .container > .header,
         .container > .breadcrumb,
         .container > .overall-progress,
-        .container > #darkModeToggle {
+        .container > #darkModeToggle,
+        .container > footer {
+            grid-column: 1 / -1;
+        }
+
+        .container > .course-card:last-of-type {
             grid-column: 1 / -1;
         }
         
@@ -1768,7 +1773,7 @@
                 </li>
                 <li class="task-item">
                     <input type="checkbox" class="task-checkbox" id="history-europeanhistory" data-course="history">
-                    <span class="task-name">European History (2/51 episodes)</span>
+                    <span class="task-name">European History (4/51 episodes)</span>
                     <span class="task-status status-incomplete">In Progress</span>
                 </li>
                 <li class="task-item">
@@ -1853,6 +1858,7 @@
 
         <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #8e8e93; font-size: 14px;">
             <hr style="border: none; border-top: 1px solid #d1d1d6; margin-bottom: 16px;">
+            Made with &hearts; in Vancouver<br>
             2025-2026
         </footer>
     </div>
