@@ -128,7 +128,7 @@
         }
         
         .course-header {
-            padding: 20px 24px 16px;
+            padding: 24px;
             border-bottom: 0.5px solid #d1d1d6;
             cursor: pointer;
             transition: background-color 0.2s ease;
@@ -138,39 +138,64 @@
             background-color: rgba(0,0,0,0.02);
         }
 
+        .course-header-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: nowrap;
+        }
+
+        .course-title {
+            font-size: 20px;
+            font-weight: 600;
+            flex-shrink: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .course-title a {
+            text-decoration: none;
+        }
+
+        .course-title a:hover {
+            text-decoration: underline;
+        }
+
         .course-toggle {
-            float: right;
             font-size: 14px;
             color: #8e8e93;
-            margin-left: 12px;
-            margin-top: 3px;
-            padding: 4px 6px;
+            padding: 4px;
             line-height: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            margin-left: auto;
             transition: transform 0.2s ease;
         }
 
         .course-toggle.expanded {
             transform: rotate(180deg);
         }
-        
-        .course-title {
-            font-size: 20px;
+
+        .cc-badge {
+            background: #007AFF;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
             font-weight: 600;
-            margin-bottom: 6px;
+            white-space: nowrap;
         }
 
         .course-grade {
-            float: right;
             font-size: 16px;
             font-weight: 700;
             color: #30d158;
             background: #e8f5e8;
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 6px 10px;
+            border-radius: 8px;
             box-shadow: 0 1px 3px rgba(48, 209, 88, 0.2);
+            white-space: nowrap;
         }
 
         .grade-c {
@@ -321,37 +346,43 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
-            
+
             .header h1 {
                 font-size: 24px;
             }
-            
+
             .course-header {
-                padding: 16px 20px 12px;
+                padding: 20px;
             }
-            
+
             .course-title {
-                font-size: 18px;
+                font-size: 17px;
             }
-            
+
+            .cc-badge,
+            .course-grade {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
+
             .task-item {
                 padding: 12px 20px;
                 min-height: 48px;
             }
-            
+
             .task-name {
                 font-size: 15px;
             }
-            
+
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 12px;
             }
-            
+
             .stat-card {
                 padding: 16px 12px;
             }
-            
+
             .stat-number {
                 font-size: 20px;
             }
@@ -444,14 +475,6 @@
         }
 
         /* Link styles */
-        .course-title a {
-            text-decoration: none;
-        }
-
-        .course-title a:hover {
-            text-decoration: underline;
-        }
-
         .task-name a {
             text-decoration: none;
         }
@@ -460,120 +483,64 @@
             text-decoration: underline;
         }
 
-        /* Dark mode support */
+        /* Dark mode */
         @media (prefers-color-scheme: dark) {
             body:not(.light-mode) {
                 background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
                 color: #fff;
             }
+        }
 
-            body:not(.light-mode) .course-card,
-            body:not(.light-mode) .stat-card,
-            body:not(.light-mode) .overall-progress {
-                background: rgba(28, 28, 30, 0.7);
-                backdrop-filter: blur(20px) saturate(180%);
-                -webkit-backdrop-filter: blur(20px) saturate(180%);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            body:not(.light-mode) .course-card:hover,
-            body:not(.light-mode) .stat-card:hover {
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-            }
-
-            body:not(.light-mode) .course-header {
-                border-bottom-color: #38383a;
-            }
-
-            body:not(.light-mode) .task-item {
-                border-bottom-color: #38383a;
-            }
-
-            body:not(.light-mode) .progress-bar-container,
-            body:not(.light-mode) .overall-progress-bar-container {
-                background: #38383a;
-            }
-
-            body:not(.light-mode) .status-incomplete {
-                background: #38383a;
-                color: #8e8e93;
-            }
-
-            body:not(.light-mode) .last-updated,
-            body:not(.light-mode) .progress-text,
-            body:not(.light-mode) .overall-progress-text,
-            body:not(.light-mode) .stat-label {
-                color: #8e8e93;
-            }
-
-            body:not(.light-mode) .overall-progress-label {
-                color: #e5e5e7;
-            }
-
-            body:not(.light-mode) .course-grade {
-                background: #1e3a1e;
-                color: #30d158;
-                box-shadow: 0 1px 3px rgba(48, 209, 88, 0.3);
-            }
-
-            body:not(.light-mode) .grade-c {
-                background: #3a2a1e;
-                color: #ff9500;
-                box-shadow: 0 1px 3px rgba(255, 149, 0, 0.3);
-            }
-
-            body:not(.light-mode) .grade-x {
-                background: #38383a;
-                color: #8e8e93;
-                box-shadow: 0 1px 3px rgba(142, 142, 147, 0.2);
-            }
-
-            body:not(.light-mode) .crashcourse-header {
-                background: #38383a;
-                border-bottom-color: #38383a;
-            }
-
-            body:not(.light-mode) .crashcourse-title {
+        body.dark-mode,
+        @media (prefers-color-scheme: dark) {
+            body:not(.light-mode) {
+                background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
                 color: #fff;
             }
         }
 
-        /* Manual dark mode */
-        body.dark-mode {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-            color: #fff;
-        }
-
         body.dark-mode .course-card,
         body.dark-mode .stat-card,
-        body.dark-mode .overall-progress {
+        body.dark-mode .overall-progress,
+        body:not(.light-mode) .course-card,
+        body:not(.light-mode) .stat-card,
+        body:not(.light-mode) .overall-progress {
             background: rgba(28, 28, 30, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         body.dark-mode .course-card:hover,
-        body.dark-mode .stat-card:hover {
+        body.dark-mode .stat-card:hover,
+        body:not(.light-mode) .course-card:hover,
+        body:not(.light-mode) .stat-card:hover {
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
         }
 
-        body.dark-mode .course-header {
+        body.dark-mode .course-header,
+        body:not(.light-mode) .course-header {
             border-bottom-color: #38383a;
         }
 
-        body.dark-mode .task-item {
+        body.dark-mode .course-header:hover,
+        body:not(.light-mode) .course-header:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        body.dark-mode .task-item,
+        body:not(.light-mode) .task-item {
             border-bottom-color: #38383a;
         }
 
         body.dark-mode .progress-bar-container,
-        body.dark-mode .overall-progress-bar-container {
+        body.dark-mode .overall-progress-bar-container,
+        body:not(.light-mode) .progress-bar-container,
+        body:not(.light-mode) .overall-progress-bar-container {
             background: #38383a;
         }
 
-        body.dark-mode .status-incomplete {
+        body.dark-mode .status-incomplete,
+        body:not(.light-mode) .status-incomplete {
             background: #38383a;
             color: #8e8e93;
         }
@@ -581,43 +548,49 @@
         body.dark-mode .last-updated,
         body.dark-mode .progress-text,
         body.dark-mode .overall-progress-text,
-        body.dark-mode .stat-label {
+        body.dark-mode .stat-label,
+        body:not(.light-mode) .last-updated,
+        body:not(.light-mode) .progress-text,
+        body:not(.light-mode) .overall-progress-text,
+        body:not(.light-mode) .stat-label {
             color: #8e8e93;
         }
 
-        body.dark-mode .overall-progress-label {
+        body.dark-mode .overall-progress-label,
+        body:not(.light-mode) .overall-progress-label {
             color: #e5e5e7;
         }
 
-        body.dark-mode .course-grade {
+        body.dark-mode .course-grade,
+        body:not(.light-mode) .course-grade {
             background: #1e3a1e;
             color: #30d158;
             box-shadow: 0 1px 3px rgba(48, 209, 88, 0.3);
         }
 
-        body.dark-mode .grade-c {
+        body.dark-mode .grade-c,
+        body:not(.light-mode) .grade-c {
             background: #3a2a1e;
             color: #ff9500;
             box-shadow: 0 1px 3px rgba(255, 149, 0, 0.3);
         }
 
-        body.dark-mode .grade-x {
+        body.dark-mode .grade-x,
+        body:not(.light-mode) .grade-x {
             background: #38383a;
             color: #8e8e93;
             box-shadow: 0 1px 3px rgba(142, 142, 147, 0.2);
         }
 
-        body.dark-mode .crashcourse-header {
+        body.dark-mode .crashcourse-header,
+        body:not(.light-mode) .crashcourse-header {
             background: #38383a;
             border-bottom-color: #38383a;
         }
 
-        body.dark-mode .crashcourse-title {
+        body.dark-mode .crashcourse-title,
+        body:not(.light-mode) .crashcourse-title {
             color: #fff;
-        }
-
-        body.dark-mode .course-header:hover {
-            background-color: rgba(255,255,255,0.05);
         }
 
         .heart {
@@ -674,21 +647,30 @@
         <!-- College -->
         <div class="course-card">
             <div class="course-header" style="border-bottom: none;">
-                <div class="course-title">College <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span></div>
+                <div class="course-header-top">
+                    <div class="course-title">College</div>
+                    <span class="cc-badge">CC ✓</span>
+                </div>
             </div>
         </div>
 
         <!-- Intellectual Property -->
         <div class="course-card">
             <div class="course-header" style="border-bottom: none;">
-                <div class="course-title">Intellectual Property <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span></div>
+                <div class="course-header-top">
+                    <div class="course-title">Intellectual Property</div>
+                    <span class="cc-badge">CC ✓</span>
+                </div>
             </div>
         </div>
 
         <!-- Study Skills & AI -->
         <div class="course-card">
             <div class="course-header" style="border-bottom: none;">
-                <div class="course-title">Study Skills & AI <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span></div>
+                <div class="course-header-top">
+                    <div class="course-title">Study Skills & AI</div>
+                    <span class="cc-badge">CC ✓</span>
+                </div>
             </div>
         </div>
 
@@ -696,7 +678,12 @@
         <!-- English -->
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('english')">
-                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/127540" target="_blank" style="color: inherit;">English Studies</a> <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span> <span class="course-grade">A+</span><span class="course-toggle">▼</span></div>
+                <div class="course-header-top">
+                    <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/127540" target="_blank" style="color: inherit;">English Studies</a></div>
+                    <span class="cc-badge">CC ✓</span>
+                    <span class="course-grade">A+</span>
+                    <span class="course-toggle">▼</span>
+                </div>
                 <div class="progress-text" id="english-progress">23 of 37 complete</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="english-bar" style="width: 62%"></div>
@@ -1027,10 +1014,15 @@
         <!-- Science -->
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('biology')">
-                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/153403" target="_blank" style="color: inherit;">Anatomy and Biology</a> <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span> <span class="course-grade grade-c">B</span><span class="course-toggle">▼</span></div>
-                <div class="progress-text" id="bio-progress">6 of 12 complete</div>
+                <div class="course-header-top">
+                    <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/153403" target="_blank" style="color: inherit;">Anatomy and Biology</a></div>
+                    <span class="cc-badge">CC ✓</span>
+                    <span class="course-grade grade-c">B</span>
+                    <span class="course-toggle">▼</span>
+                </div>
+                <div class="progress-text" id="bio-progress">7 of 15 complete</div>
                 <div class="progress-bar-container">
-                    <div class="progress-bar" id="bio-bar" style="width: 50%"></div>
+                    <div class="progress-bar" id="bio-bar" style="width: 47%"></div>
                 </div>
             </div>
 
@@ -1374,6 +1366,21 @@
                     <span class="task-status status-complete">Complete</span>
                 </li>
                 <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-inclass1" data-course="biology" checked>
+                    <span class="task-name">In-class Test 1/3</span>
+                    <span class="task-status status-complete">Complete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-inclass2" data-course="biology">
+                    <span class="task-name">In-class Test 2/3</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" class="task-checkbox" id="bio-inclass3" data-course="biology">
+                    <span class="task-name">In-class Test 3/3</span>
+                    <span class="task-status status-incomplete">Incomplete</span>
+                </li>
+                <li class="task-item">
                     <input type="checkbox" class="task-checkbox" id="bio-u4-project" data-course="biology">
                     <span class="task-name">U4 Project</span>
                     <span class="task-status status-incomplete">Incomplete</span>
@@ -1414,7 +1421,11 @@
         <!-- Math -->
         <div class="course-card">
             <div class="course-header" onclick="toggleCourse('precalculus')">
-                <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/184298" target="_blank" style="color: inherit;">Pre-Calculus</a> <span class="course-grade">A+</span><span class="course-toggle">▼</span></div>
+                <div class="course-header-top">
+                    <div class="course-title"><a href="https://langleysd35.onlinelearningbc.com/d2l/home/184298" target="_blank" style="color: inherit;">Pre-Calculus</a></div>
+                    <span class="course-grade">A+</span>
+                    <span class="course-toggle">▼</span>
+                </div>
                 <div class="progress-text" id="precalc-progress">Not started</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="precalc-bar" style="width: 0%"></div>
@@ -1525,28 +1536,38 @@
         <!-- Business Entrepreneurship -->
         <div class="course-card">
             <div class="course-header" style="border-bottom: none;">
-                <div class="course-title">Business Entrepreneurship <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span></div>
+                <div class="course-header-top">
+                    <div class="course-title">Business Entrepreneurship</div>
+                    <span class="cc-badge">CC ✓</span>
+                </div>
             </div>
         </div>
 
         <!-- Economics -->
         <div class="course-card">
             <div class="course-header" style="border-bottom: none;">
-                <div class="course-title">Economics <span style="background: #007AFF; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 6px;">CC ✓</span></div>
+                <div class="course-header-top">
+                    <div class="course-title">Economics</div>
+                    <span class="cc-badge">CC ✓</span>
+                </div>
             </div>
         </div>
 
         <!-- History -->
         <div class="course-card">
             <div class="course-header" style="border-bottom: none;">
-                <div class="course-title">History</div>
+                <div class="course-header-top">
+                    <div class="course-title">History</div>
+                </div>
             </div>
         </div>
 
         <!-- STEM -->
         <div class="course-card">
             <div class="course-header" style="border-bottom: none;">
-                <div class="course-title">STEM</div>
+                <div class="course-header-top">
+                    <div class="course-title">STEM</div>
+                </div>
             </div>
         </div>
 
@@ -1655,7 +1676,7 @@
                     progressBar.style.width = percent + '%';
                 } else if (course === 'biology') {
                     const totalComplete = completed + 5; // Pre-completed tasks
-                    const totalTasks = 12;
+                    const totalTasks = 15;
                     const percent = Math.round((totalComplete / totalTasks) * 100);
                     progressBar.style.width = percent + '%';
                 } else {
