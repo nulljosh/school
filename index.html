@@ -143,12 +143,14 @@
             align-items: center;
             gap: 8px;
             margin-bottom: 12px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .course-title {
             font-size: 20px;
             font-weight: 600;
+            flex: 1;
+            min-width: 0;
         }
 
         .course-title a {
@@ -165,6 +167,7 @@
             padding: 4px;
             line-height: 1;
             margin-left: auto;
+            flex-shrink: 0;
             transition: transform 0.2s ease;
         }
 
@@ -180,6 +183,7 @@
             font-size: 11px;
             font-weight: 600;
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .course-grade {
@@ -191,6 +195,7 @@
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(48, 209, 88, 0.2);
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .grade-c {
