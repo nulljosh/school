@@ -484,14 +484,11 @@
         }
 
         /* Dark mode */
-        @media (prefers-color-scheme: dark) {
-            body:not(.light-mode) {
-                background: #000000;
-                color: #fff;
-            }
+        body.dark-mode {
+            background: #000000;
+            color: #fff;
         }
 
-        body.dark-mode,
         @media (prefers-color-scheme: dark) {
             body:not(.light-mode) {
                 background: #000000;
