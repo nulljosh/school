@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dream Creator 9000</title>
+    <title>Manifester 9000</title>
     <style>
         * {
             margin: 0;
@@ -64,15 +64,38 @@
             font-size: 1.5em;
             font-weight: 600;
         }
+        .reality-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+        @media (max-width: 1024px) {
+            .reality-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .reality-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         .reality-item {
-            margin: 20px 0;
-            padding: 15px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.5);
             border-left: 4px solid #007aff;
-            border-radius: 10px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .reality-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
         .reality-item strong {
             color: #007aff;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
         .affirmation {
             font-size: 1.1em;
@@ -107,16 +130,17 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>DREAM CREATOR 9000</h1>
+            <h1>MANIFESTER 9000</h1>
             <p class="subtitle">It Is Finished | Living In The End</p>
         </div>
 
         <div class="section">
             <h2>My Current Reality</h2>
 
-            <div class="reality-item">
-                <strong>My Home</strong><br>
-                I'm sitting in MY $1.5M home right now. The keys are on the counter. The space is mine. No landlord, no rent checks - just my place. It feels incredible waking up here every day knowing this is mine.
+            <div class="reality-grid">
+                <div class="reality-item">
+                <strong>Family Home</strong><br>
+                Sitting in my parents' $1.5M home - they've paid off $400-500k already. Almost halfway there. The equity is building, the foundation is solid. This is wealth being built, legacy being created. I'm watching it happen, learning how it's done.
             </div>
 
             <div class="reality-item">
@@ -157,6 +181,17 @@
             <div class="reality-item">
                 <strong>Happiness & Peace</strong><br>
                 I'm genuinely happy. Not chasing happiness - I'm living it. My mind is at peace. I wake up grateful, go to sleep content. Life is good and getting better. I'm exactly where I'm meant to be, with everything I need.
+            </div>
+
+            <div class="reality-item">
+                <strong>Quality Weed</strong><br>
+                Got my stash locked in. Premium flower, always fresh, always good. No stress about running out, no sketchy pickups. Just quality bud whenever I want it. Life's better when you're not dry.
+            </div>
+
+            <div class="reality-item">
+                <strong>Well Fed</strong><br>
+                Fridge is stocked, pantry is full. I eat good every day - no skipping meals, no cheap ramen struggles. Real food, whenever I'm hungry. Never worrying about where the next meal comes from. That's abundance.
+            </div>
             </div>
         </div>
 
