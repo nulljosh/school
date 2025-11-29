@@ -21,27 +21,32 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
+            padding-top: 0;
         }
         .header {
-            text-align: center;
-            margin-bottom: 50px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            padding: 40px;
-            border-radius: 20px;
+            padding: 20px 30px;
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.18);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            margin-bottom: 5px;
             color: #1d1d1f;
             font-weight: 700;
         }
         .subtitle {
             color: #666;
             font-style: italic;
+            font-size: 0.85em;
         }
         .section {
             background: rgba(255, 255, 255, 0.7);
@@ -168,5 +173,27 @@
             Read before bed. Feel it. Live in it. Let reality conform.
         </div>
     </div>
+
+    <script>
+        // Parallax scroll effect for header
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scrolling down - hide header slightly
+                header.style.transform = 'translateY(-20px)';
+                header.style.opacity = '0.6';
+            } else {
+                // Scrolling up - show header
+                header.style.transform = 'translateY(0)';
+                header.style.opacity = '1';
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
 </body>
 </html>
