@@ -430,6 +430,46 @@
             z-index: 1000;
         }
 
+        /* Portfolio link button */
+        .portfolio-link {
+            position: fixed;
+            top: 20px;
+            right: 74px;
+            width: 44px;
+            height: 44px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .portfolio-link:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-link:active {
+            transform: scale(0.95);
+        }
+
+        body.dark-mode .portfolio-link {
+            background: rgba(28, 28, 30, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
         .dark-mode-toggle:hover {
             transform: scale(1.1);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -609,6 +649,9 @@
 </head>
 <body>
     <div class="container">
+        <a href="science.html" class="portfolio-link" aria-label="Science homework">
+            <span>📚</span>
+        </a>
         <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
             <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
